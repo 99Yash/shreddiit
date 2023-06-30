@@ -1,12 +1,12 @@
 import { subredditValidator } from '@/lib/validators/subreddit';
-import { NextApiRequest } from 'next';
+import { NextRequest } from 'next/server';
 import { z } from 'zod';
 
-export async function POST(req: NextApiRequest) {
+export async function POST(req: NextRequest) {
   try {
     //todo: figure this out
-    const body = await req.body();
-    const { name } = subredditValidator.parse(body);
+
+    const { name } = subredditValidator.parse(req.body);
     //todo: check if subreddit already exists
 
     //* if subreddit exists

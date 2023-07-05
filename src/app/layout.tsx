@@ -8,6 +8,7 @@ import { Toaster } from '@/components/ui/toaster';
 import Providers from '@/components/Providers';
 
 export const metadata = {
+  metadataBase: new URL(siteConfig.siteUrl),
   title: siteConfig.title,
   description: siteConfig.description,
   keywords: siteConfig.keywords,

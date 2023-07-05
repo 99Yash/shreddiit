@@ -18,3 +18,5 @@ export const siteConfig = {
     'An open source Reddit Clone built with everything new in Next.js 13.',
   siteUrl: 'https://shreddiit.vercel.app',
 };
+
+export const INFINITE_SCROLLING_PAGINATION_RESULTS = 2;

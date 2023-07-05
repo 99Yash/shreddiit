@@ -55,7 +55,7 @@ const Page: FC = () => {
       }
       return toast({
         title: 'Something went wrong',
-        description: 'Please try again later',
+        description: 'Please try again.',
         variant: 'destructive',
       });
     },

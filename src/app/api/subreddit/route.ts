@@ -1,17 +1,16 @@
 import { db } from '@/lib/db';
 import { subredditValidator } from '@/lib/validators/subreddit';
 import { auth } from '@clerk/nextjs';
-import { NextRequest } from 'next/server';
 import { z } from 'zod';
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   try {
     const { userId, getToken } = auth();
 
     const token = await getToken();
 
     if (!token) {
-      return new Response('No Supabase template token', { status: 404 });
+      return new Response('No token', { status: 404 });
     }
     const body = await req.json();
     const { name } = subredditValidator.parse(body);

@@ -12,6 +12,7 @@ import { AvatarFallback } from '@radix-ui/react-avatar';
 import { Avatar, AvatarImage } from './ui/avatar';
 import { LogOut, UserPlus } from 'lucide-react';
 import Link from 'next/link';
+import { Skeleton } from './ui/skeleton';
 
 export const AuthedNavbar = () => {
   const { user, signOut } = useClerk();
@@ -19,13 +20,17 @@ export const AuthedNavbar = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <Avatar>
-          <AvatarImage
-            src={user?.profileImageUrl}
-            alt={user?.firstName || 'User'}
-          />
-          <AvatarFallback>Logged</AvatarFallback>
-        </Avatar>
+        {user ? (
+          <Avatar>
+            <AvatarImage
+              src={user?.profileImageUrl}
+              alt={user?.firstName || 'User'}
+            />
+            <AvatarFallback>Logged</AvatarFallback>
+          </Avatar>
+        ) : (
+          <Skeleton className="h-12 w-12 rounded-full" />
+        )}
       </DropdownMenuTrigger>
       <DropdownMenuContent className={`bg-slate-50 `} align="end">
         <div className="flex items-center justify-start gap-2 p-2">

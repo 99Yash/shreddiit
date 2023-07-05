@@ -1,5 +1,5 @@
 import { db } from '@/lib/db';
-import { subredditSubscriptionValidator } from '@/lib/validators/subreddit';
+import { postValidator } from '@/lib/validators/post';
 import { auth } from '@clerk/nextjs';
 import { z } from 'zod';
 
@@ -9,7 +9,7 @@ export async function POST(req: Request) {
     if (!userId) return new Response('Unauthorized', { status: 401 });
 
     const body = await req.json();
-    const { subredditId } = subredditSubscriptionValidator.parse(body);
+    const { subredditId, title, content } = postValidator.parse(body);
 
     const subscriptionExists = await db.subscription.findFirst({
       where: {
@@ -18,18 +18,20 @@ export async function POST(req: Request) {
       },
     });
 
-    if (subscriptionExists) {
-      return new Response('Already subscribed.', { status: 400 });
+    if (!subscriptionExists) {
+      return new Response('Subscription to post is required', { status: 400 });
     }
 
-    await db.subscription.create({
+    await db.post.create({
       data: {
-        userId,
+        title,
+        content,
+        authorId: userId,
         subredditId,
       },
     });
 
-    return new Response(subredditId, {
+    return new Response('Success', {
       status: 200,
     });
   } catch (err) {
@@ -38,7 +40,7 @@ export async function POST(req: Request) {
         status: 422,
       });
     }
-    return new Response("Couldn't subscribe", {
+    return new Response("Couldn't post to subreddit this time", {
       status: 500,
     });
   }

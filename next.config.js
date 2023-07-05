@@ -3,9 +3,12 @@ const nextConfig = {
   images: {
     domains: ['uploadthing.com', 'lh3.googleusercontent.com'],
   },
+  compiler: {
+    removeConsole: true,
+  },
   experimental: {
-    appDir: true
-  }
-}
+    appDir: true,
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

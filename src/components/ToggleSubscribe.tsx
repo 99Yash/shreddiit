@@ -95,7 +95,7 @@ const ToggleSubscribe = ({
     },
   });
 
-  console.log(isSubscribed);
+  console.log('isSubscribed', isSubscribed);
   return isSubscribed ? (
     <Button
       onClick={() => unsubscribe()}

@@ -5,12 +5,10 @@ import { z } from 'zod';
 
 export async function POST(req: Request) {
   try {
-    const { userId, getToken } = auth();
+    const { userId } = auth();
 
-    const token = await getToken();
-
-    if (!token) {
-      return new Response('No token', { status: 404 });
+    if (!userId) {
+      return new Response('Unauthorized', { status: 401 });
     }
     const body = await req.json();
     const { name } = subredditValidator.parse(body);

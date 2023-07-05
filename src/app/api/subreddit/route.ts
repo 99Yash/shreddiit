@@ -1,5 +1,4 @@
 import { db } from '@/lib/db';
-import { supabaseClient } from '@/lib/supabaseClient';
 import { subredditValidator } from '@/lib/validators/subreddit';
 import { auth } from '@clerk/nextjs';
 import { NextRequest } from 'next/server';
@@ -15,15 +14,14 @@ export async function POST(req: NextRequest) {
       return new Response('No Supabase template token', { status: 404 });
     }
     const body = await req.json();
-    console.log(body);
     const { name } = subredditValidator.parse(body);
-    //* if subreddit exists
-    // const supabase = await supabaseClient(token);
+
     const subredditExists = await db.subreddit.findFirst({
       where: {
         name,
       },
     });
+
     if (subredditExists) {
       return new Response(
         'Subreddit already exists.Try entering another name.',

@@ -1,6 +1,13 @@
 import { buttonVariants } from '@/components/ui/Button';
 import { HomeIcon } from 'lucide-react';
 import Link from 'next/link';
+import { DM_Sans } from 'next/font/google';
+
+const dm_sans = DM_Sans({
+  weight: ['400', '500', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 export default function Home() {
   return (
@@ -19,7 +26,7 @@ export default function Home() {
 
           <div className="-my-3 divide-y divide-gray-100 px-6 py-4 text-sm leading-6 ">
             <div className="py-3 flex justify-between gap-x-4">
-              <p className="text-zinc-600 font-medium ">
+              <p className={`text-zinc-600 font-medium `}>
                 Your personal Home Page. Come here to check in with your
                 favorite communities
               </p>
@@ -31,7 +38,7 @@ export default function Home() {
               })}
               href={`/r/create`}
             >
-              Create Community
+              <span className={`${dm_sans.className}`}>Create Community</span>
             </Link>
           </div>
         </div>

@@ -24,18 +24,15 @@ export const AuthedNavbar = () => {
             src={user?.profileImageUrl}
             alt={user?.firstName || 'User'}
           />
-          <AvatarFallback>
-            {user?.firstName?.charAt(0).toUpperCase()}
-            {user?.lastName?.charAt(0).toUpperCase()}
-          </AvatarFallback>
+          <AvatarFallback>Logged</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="bg-white" align="end">
+      <DropdownMenuContent className={`bg-slate-50 `} align="end">
         <div className="flex items-center justify-start gap-2 p-2">
           <div className="flex flex-col space-y-1 leading-none">
             {user?.fullName && <p className="font-medium">{user.fullName}</p>}
             {user?.primaryEmailAddress && (
-              <p className="w-[200px] truncate text-sm text-muted-foreground">
+              <p className="w-[200px] truncate text-sm font-medium">
                 {user?.primaryEmailAddress?.emailAddress}
               </p>
             )}

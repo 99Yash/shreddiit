@@ -3,24 +3,32 @@
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/input';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import axios, { AxiosError } from 'axios';
 import { createSubredditPayload } from '@/lib/validators/subreddit';
 import { toast } from '@/hooks/use-toast';
 import { useCustomToast } from '@/hooks/use-custom-toast';
+import { DM_Sans } from 'next/font/google';
 
-const Page = () => {
-  const [input, setInput] = useState<string>('');
+const dm_sans = DM_Sans({
+  weight: ['400', '500', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+});
+
+const Page: FC = () => {
   const router = useRouter();
+
+  const [input, setInput] = useState<string>('');
   const { loginToast } = useCustomToast();
 
   const { mutate: createCommunity, isLoading } = useMutation({
     mutationFn: async () => {
-      const payload: createSubredditPayload = {
+      const body: createSubredditPayload = {
         name: input,
       };
-      const { data } = await axios.post(`/api/subreddit`, payload);
+      const { data } = await axios.post(`/api/subreddit`, body);
       return data as string;
     },
     onError: (err) => {
@@ -30,6 +38,7 @@ const Page = () => {
             title: 'Community already exists',
             description: 'Please choose a different name',
             variant: 'destructive',
+            duration: 3000,
           });
         }
         if (err.response?.status === 422) {
@@ -37,6 +46,7 @@ const Page = () => {
             title: 'Invalid subreddit name',
             description: 'Please choose a name between 3 and 21 characters',
             variant: 'destructive',
+            duration: 3000,
           });
         }
         if (err.response?.status === 401) {
@@ -49,19 +59,22 @@ const Page = () => {
         variant: 'destructive',
       });
     },
+    onSuccess: (data) => {
+      router.push(`/r/${data}`);
+    },
   });
 
   return (
     <div className="container flex items-center h-full max-w-3xl mx-auto ">
       <div className="relative bg-white h-fit w-full rounded-lg p-4 space-y-6">
         <div className="flex justify-between items-center ">
-          <h1 className="text-xl font-semibold ">Create a community</h1>
+          <h1 className="text-xl font-bold ">Create a community</h1>
         </div>
         <hr className="bg-zinc-500 h-px " />
 
         <div className="">
-          <p className="text-lg font-medium">Name</p>
-          <p className="text-xs pb-2">
+          <p className="text-lg font-semibold">Name</p>
+          <p className="text-xs pb-2 font-medium ">
             Community names including capitalization cannot be changed.
           </p>
 
@@ -79,6 +92,7 @@ const Page = () => {
 
         <div className=" flex justify-end gap-4 ">
           <Button
+            className={`${dm_sans.className}`}
             variant="subtle"
             onClick={() => {
               router.back();
@@ -87,6 +101,7 @@ const Page = () => {
             Cancel
           </Button>
           <Button
+            className={`${dm_sans.className}`}
             isLoading={isLoading}
             disabled={input.length === 0}
             onClick={() => {

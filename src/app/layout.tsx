@@ -10,20 +10,11 @@ import Providers from '@/components/Providers';
 export const metadata = {
   title: siteConfig.title,
   description: siteConfig.description,
-  keywords: [
-    'Next.js',
-    'TypeScript',
-    'App Router',
-    'React',
-    'Tailwind CSS',
-    'Server Components',
-    'Server Actions',
-    'Shadcn/UI',
-  ],
+  keywords: siteConfig.keywords,
   authors: [
     {
-      name: 'Yash Gourav Kar',
-      url: 'https://github.com/99Yash',
+      name: siteConfig.authorName,
+      url: siteConfig.authorGithub,
     },
   ],
   creator: '99Yash',
@@ -35,7 +26,7 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    // url: 'https://shredit.vercel.app/',
+    url: siteConfig.siteUrl,
     title: siteConfig.title,
     description: siteConfig.description,
     siteName: siteConfig.title,
@@ -52,6 +43,7 @@ export const metadata = {
 
 const inter = Inter({
   subsets: ['latin'],
+  display: 'swap',
 });
 
 interface RootLayoutProps {

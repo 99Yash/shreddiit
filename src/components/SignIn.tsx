@@ -12,12 +12,12 @@ const SignIn = () => {
       </div>
       <OAuthSignIn />
 
-      <p className="px-8 text-center text-sm text-zinc-700 hover:text-zinc-900">
+      <p className="px-8 text-center text-sm text-zinc-700 hover:text-zinc-950">
         Don&apos;t have an account?{' '}
         <Link
           aria-label="Sign up"
           href="/sign-up"
-          className="text-primary  underline-offset-4 transition-colors hover:underline"
+          className="text-primary underline-offset-4 transition-colors hover:underline"
         >
           Sign up
         </Link>

@@ -1,18 +1,54 @@
+import { db } from '@/lib/db';
+import { supabaseClient } from '@/lib/supabaseClient';
 import { subredditValidator } from '@/lib/validators/subreddit';
+import { auth } from '@clerk/nextjs';
 import { NextRequest } from 'next/server';
 import { z } from 'zod';
 
 export async function POST(req: NextRequest) {
   try {
-    //todo: figure this out
+    const { userId, getToken } = auth();
 
-    const { name } = subredditValidator.parse(req.body);
-    //todo: check if subreddit already exists
+    const token = await getToken();
 
+    if (!token) {
+      return new Response('No Supabase template token', { status: 404 });
+    }
+    const body = await req.json();
+    console.log(body);
+    const { name } = subredditValidator.parse(body);
     //* if subreddit exists
-    return new Response('Subreddit already exists', {
-      status: 409,
+    // const supabase = await supabaseClient(token);
+    const subredditExists = await db.subreddit.findFirst({
+      where: {
+        name,
+      },
     });
+    if (subredditExists) {
+      return new Response(
+        'Subreddit already exists.Try entering another name.',
+        {
+          status: 409,
+        }
+      );
+    }
+
+    const subreddit = await db.subreddit.create({
+      data: {
+        name,
+        creatorId: userId,
+      },
+    });
+
+    //? subscribe user to own subreddit
+    await db.subscription.create({
+      data: {
+        userId: userId!,
+        subredditId: subreddit.id,
+      },
+    });
+
+    return new Response(subreddit.name);
   } catch (err: any) {
     if (err instanceof z.ZodError) {
       return new Response(err.message, {

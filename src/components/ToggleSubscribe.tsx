@@ -110,7 +110,7 @@ const ToggleSubscribe = ({
       isLoading={isSubscriptionLoading}
       className="w-full mt-1 mb-4"
     >
-      <span className={dm_sans.className}>Join to Post</span>
+      Join to Post
     </Button>
   );
 };

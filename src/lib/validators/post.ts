@@ -1,16 +1,16 @@
 import { z } from 'zod';
 
-export const postValidator = z.object({
+export const PostValidator = z.object({
   title: z
     .string()
     .min(3, {
       message: 'Title must be at least 3 characters long',
     })
-    .max(124, {
-      message: 'Title must be at most 124 characters long',
+    .max(128, {
+      message: 'Title must be less than 128 characters long',
     }),
   subredditId: z.string(),
-  content: z.any(),
+  content: z.any().optional(),
 });
 
-export type PostCreationReq = z.infer<typeof postValidator>;
+export type PostCreationRequest = z.infer<typeof PostValidator>;

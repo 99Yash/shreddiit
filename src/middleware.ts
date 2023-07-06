@@ -1,10 +1,18 @@
-import { clerkClient } from '@clerk/nextjs';
 import { authMiddleware } from '@clerk/nextjs/server';
 import { NextResponse } from 'next/server';
 
 export default authMiddleware({
   // Public routes are routes that don't require authentication
-  publicRoutes: ['/', '/sign-in(.*)', '/sign-up(.*)', '/sso-callback(.*)'],
+  publicRoutes: [
+    '/',
+    '/sign-in(.*)',
+    '/sign-up(.*)',
+    '/sso-callback(.*)',
+    '/api(.*)',
+  ],
+  apiRoutes: '/api',
+  debug: true,
+  signInUrl: '/sign-in',
   async afterAuth(auth, req) {
     if (auth.isPublicRoute) {
       //  For public routes, we don't need to do anything
@@ -17,10 +25,6 @@ export default authMiddleware({
       url.pathname = '/sign-in';
       return NextResponse.redirect(url);
     }
-
-    const user = await clerkClient.users.getUser(auth.userId);
-
-    if (!user) throw new Error('User not found');
   },
 });
 

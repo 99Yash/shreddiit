@@ -38,7 +38,7 @@ export default function Home() {
               })}
               href={`/r/create`}
             >
-              <span className={`${dm_sans.className}`}>Create Community</span>
+              Create Community
             </Link>
           </div>
         </div>

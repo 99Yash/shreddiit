@@ -1,4 +1,5 @@
 import MiniPostSubreddit from '@/components/MiniPostSubreddit';
+import PostFeed from '@/components/PostFeed';
 import { db } from '@/lib/db';
 import { INFINITE_SCROLLING_PAGINATION_RESULTS } from '@/siteConfig';
 import { notFound } from 'next/navigation';
@@ -39,6 +40,7 @@ const Page = async ({
       {/* mini create post */}
       <MiniPostSubreddit />
       {/* todo: show posts in the feed */}
+      <PostFeed initialPosts={subreddit.posts} subredditName={subreddit.name} />
     </>
   );
 };

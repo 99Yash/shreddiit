@@ -1,5 +1,5 @@
 import { db } from '@/lib/db';
-import { postValidator } from '@/lib/validators/post';
+import { PostValidator } from '@/lib/validators/post';
 import { auth } from '@clerk/nextjs';
 import { z } from 'zod';
 
@@ -9,7 +9,7 @@ export async function POST(req: Request) {
     if (!userId) return new Response('Unauthorized', { status: 401 });
 
     const body = await req.json();
-    const { subredditId, title, content } = postValidator.parse(body);
+    const { subredditId, title, content } = PostValidator.parse(body);
 
     const subscriptionExists = await db.subscription.findFirst({
       where: {
@@ -19,7 +19,7 @@ export async function POST(req: Request) {
     });
 
     if (!subscriptionExists) {
-      return new Response('Subscription to post is required', { status: 400 });
+      return new Response('Subscription to post is required', { status: 403 });
     }
 
     await db.post.create({
@@ -31,7 +31,7 @@ export async function POST(req: Request) {
       },
     });
 
-    return new Response('Success', {
+    return new Response('OK', {
       status: 200,
     });
   } catch (err) {

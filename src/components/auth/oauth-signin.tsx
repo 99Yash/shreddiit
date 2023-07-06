@@ -1,11 +1,11 @@
 'use client';
 
-import React from 'react';
-import { Button } from '../ui/Button';
-import { OAuthStrategy } from '@clerk/nextjs/dist/types/server';
-import { Icons } from '../Icons';
-import { isClerkAPIResponseError, useSignIn } from '@clerk/nextjs';
 import { toast } from '@/hooks/use-toast';
+import { isClerkAPIResponseError, useSignIn } from '@clerk/nextjs';
+import { OAuthStrategy } from '@clerk/nextjs/dist/types/server';
+import React from 'react';
+import { Icons } from '../Icons';
+import { Button } from '../ui/Button';
 
 const OAuthSignIn = () => {
   const oauthProviders = [

@@ -17,10 +17,9 @@ const layout = async ({
   };
 }) => {
   const user = await currentUser();
+
   const subreddit = await db.subreddit.findFirst({
-    where: {
-      name: slug,
-    },
+    where: { name: slug },
     include: {
       posts: {
         include: {

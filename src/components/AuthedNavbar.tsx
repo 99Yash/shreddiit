@@ -8,10 +8,9 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { useClerk } from '@clerk/nextjs';
-import { AvatarFallback } from '@radix-ui/react-avatar';
-import { Avatar, AvatarImage } from './ui/avatar';
 import { LogOut, UserPlus } from 'lucide-react';
 import Link from 'next/link';
+import { Avatar, AvatarImage } from './ui/avatar';
 import { Skeleton } from './ui/skeleton';
 
 export const AuthedNavbar = () => {
@@ -26,10 +25,9 @@ export const AuthedNavbar = () => {
               src={user?.profileImageUrl}
               alt={user?.firstName || 'User'}
             />
-            <AvatarFallback>Logged</AvatarFallback>
           </Avatar>
         ) : (
-          <Skeleton className="h-12 w-12 rounded-full" />
+          <Skeleton className="h-10 w-10 rounded-full bg-slate-500 " />
         )}
       </DropdownMenuTrigger>
       <DropdownMenuContent className={`bg-slate-50 `} align="end">

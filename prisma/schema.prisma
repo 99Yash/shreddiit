@@ -92,7 +92,6 @@ enum VoteType {
 }
 
 model Vote {
-  createdAt DateTime @default(now())
   post      Post     @relation(fields: [postId], references: [id])
   postId    String
   user      User     @relation(fields: [userId], references: [clerkId])

@@ -46,6 +46,7 @@ const Post = ({
                 <span className="px-1">•</span>
               </>
             ) : null}
+            {/* use clerk for displaying author */}
             {/* <span>Posted by u/{post.author.name}</span>{' '} */}
             {formatTimeToNow(new Date(post.createdAt))}
           </div>

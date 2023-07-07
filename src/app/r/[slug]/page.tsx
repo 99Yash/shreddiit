@@ -25,6 +25,9 @@ const Page = async ({
           comments: true,
           subreddit: true,
         },
+        orderBy: {
+          createdAt: 'desc',
+        },
         take: INFINITE_SCROLLING_PAGINATION_RESULTS,
       },
     },
@@ -37,9 +40,7 @@ const Page = async ({
       <h1 className="font-bold text-3xl md:text-4xl h-14">
         {`r/${subreddit.name}`}
       </h1>
-      {/* mini create post */}
       <MiniPostSubreddit />
-      {/* todo: show posts in the feed */}
       <PostFeed initialPosts={subreddit.posts} subredditName={subreddit.name} />
     </>
   );

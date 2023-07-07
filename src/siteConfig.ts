@@ -19,4 +19,4 @@ export const siteConfig = {
   siteUrl: 'https://shreddiit.vercel.app',
 };
 
-export const INFINITE_SCROLLING_PAGINATION_RESULTS = 12;
+export const INFINITE_SCROLLING_PAGINATION_RESULTS = 3;

@@ -164,7 +164,6 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
   }, [isMounted, initializeEditor]);
 
   async function onSubmit(data: FormData) {
-    console.log(ref.current?.save().then((data) => console.log('data', data)));
     const blocks = await ref.current?.save();
 
     const payload: PostCreationRequest = {

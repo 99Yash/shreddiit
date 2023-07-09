@@ -27,18 +27,6 @@ const renderers = {
   code: CustomCodeRenderer,
 };
 
-const EditorOutput: FC<EditorOutputProps> = ({ content }) => {
-  return (
-    // @ts-expect-error
-    <Output
-      style={styles}
-      data={content}
-      className="text-sm"
-      renderers={renderers}
-    />
-  );
-};
-
 function CustomImageRenderer({ data }: any) {
   const src = data.file.url;
 
@@ -56,5 +44,17 @@ function CustomCodeRenderer({ data }: any) {
     </pre>
   );
 }
+
+const EditorOutput: FC<EditorOutputProps> = ({ content }) => {
+  return (
+    // @ts-expect-error
+    <Output
+      style={styles}
+      data={content}
+      className="text-sm"
+      renderers={renderers}
+    />
+  );
+};
 
 export default EditorOutput;

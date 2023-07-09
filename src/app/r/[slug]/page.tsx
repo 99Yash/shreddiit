@@ -20,7 +20,6 @@ const Page = async ({
     include: {
       posts: {
         include: {
-          author: true,
           votes: true,
           comments: true,
           subreddit: true,

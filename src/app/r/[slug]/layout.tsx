@@ -41,8 +41,6 @@ const layout = async ({
     },
   });
 
-  console.log('subscription', subscription);
-  console.log('subreddit', subreddit);
   if (!subreddit) return notFound();
   const isSubscribed = !!subscription;
 
@@ -53,7 +51,6 @@ const layout = async ({
       },
     },
   });
-  console.log('subscriptionCount', subredditMemberCount);
 
   return (
     <div className="sm:container max-w-7xl mx-auto h-full pt-12 ">

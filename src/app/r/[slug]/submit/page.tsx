@@ -16,7 +16,6 @@ const page = async ({
       name: params.slug,
     },
   });
-  console.log('subreddit r/slug/submit', subreddit);
   if (!subreddit) return notFound();
 
   return (

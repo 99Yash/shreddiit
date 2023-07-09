@@ -1,5 +1,6 @@
 import { formatTimeToNow } from '@/lib/utils';
-import { Post, Vote } from '@prisma/client';
+import { ExtendedPost } from '@/types/db';
+import { Vote } from '@prisma/client';
 import { MessageSquare } from 'lucide-react';
 import { useRef } from 'react';
 import EditorOutput from './EditorOutput';
@@ -15,9 +16,7 @@ const Post = ({
   currentVote,
 }: {
   subredditName: string;
-  post: Post & {
-    votes: Vote[];
-  };
+  post: ExtendedPost;
   commentAmt: number;
   votesAmt: number;
   currentVote?: PartialVote;
@@ -60,7 +59,7 @@ const Post = ({
             className="relative text-sm max-h-40 w-full overflow-clip "
           >
             <EditorOutput content={post.content} />
-            {postRef.current?.clientHeight === 160 ? (
+            {postRef.current?.clientHeight === 120 ? (
               <div className="absolute bottom-0 left-0  h-24 w-full bg-gradient-to-t from-slate-200 to-transparent  " />
             ) : null}
           </div>

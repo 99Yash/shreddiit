@@ -164,6 +164,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
   }, [isMounted, initializeEditor]);
 
   async function onSubmit(data: FormData) {
+    console.log(ref.current?.save().then((data) => console.log('data', data)));
     const blocks = await ref.current?.save();
 
     const payload: PostCreationRequest = {
@@ -175,9 +176,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
     createPost(payload);
   }
 
-  if (!isMounted) {
-    return null;
-  }
+  if (!isMounted) return null;
 
   const { ref: titleRef, ...rest } = register('title');
 

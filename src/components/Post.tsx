@@ -1,5 +1,5 @@
 import { formatTimeToNow } from '@/lib/utils';
-import { Post, User, Vote } from '@prisma/client';
+import { Post, Vote } from '@prisma/client';
 import { MessageSquare } from 'lucide-react';
 import { useRef } from 'react';
 import EditorOutput from './EditorOutput';
@@ -16,7 +16,6 @@ const Post = ({
 }: {
   subredditName: string;
   post: Post & {
-    author: User;
     votes: Vote[];
   };
   commentAmt: number;

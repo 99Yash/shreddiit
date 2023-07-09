@@ -1,11 +1,11 @@
+import Navbar from '@/components/Navbar';
+import Providers from '@/components/Providers';
+import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
 import '@/styles/globals.css';
-import { Inter } from 'next/font/google';
 import { ClerkProvider } from '@clerk/nextjs';
+import { Inter } from 'next/font/google';
 import { siteConfig } from '../siteConfig';
-import Navbar from '@/components/Navbar';
-import { Toaster } from '@/components/ui/toaster';
-import Providers from '@/components/Providers';
 
 export const metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
@@ -45,6 +45,7 @@ export const metadata = {
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
 });
 
 interface RootLayoutProps {
@@ -58,7 +59,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <html
           lang="en"
           className={cn(
-            'bg-slate-100 text-slate-900 antialiased light',
+            'bg-slate-100 tracking-tight text-slate-900 antialiased light',
             inter.className
           )}
         >

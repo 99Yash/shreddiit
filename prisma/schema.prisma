@@ -64,7 +64,7 @@ model Post {
   comments Comment[]
 
   votes       Vote[]
-  CommentVote CommentVote[]
+
 }
 
 model Comment {
@@ -103,17 +103,13 @@ model Vote {
 }
 
 model CommentVote {
-  createdAt DateTime @default(now())
+  
   comment   Comment? @relation(fields: [commentId], references: [id])
   commentId String
   user      User     @relation(fields: [userId], references: [clerkId])
   userId    String
 
   voteType  String?
-  voteValue Int?
-
-  post   Post   @relation(fields: [postId], references: [id])
-  postId String
 
   @@id([commentId, userId])
 }

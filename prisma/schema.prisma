@@ -6,20 +6,20 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
 model User {
   id                String         @id @default(cuid())
-  clerkId String @unique
+  clerkId           String         @unique
   name              String?
   email             String?        @unique
   emailVerified     DateTime?
   createdSubreddits Subreddit[]    @relation("CreatedBy")
   Post              Post[]
-  votes              Vote[]
+  votes             Vote[]
   CommentVote       CommentVote[]
   Subscription      Subscription[]
   Comment           Comment[]
@@ -40,7 +40,7 @@ model Subreddit {
 }
 
 model Subscription {
-  user   User   @relation(fields: [userId], references: [clerkId])
+  user   User?   @relation(fields: [userId], references: [clerkId])
   userId String
 
   subreddit   Subreddit @relation(fields: [subredditId], references: [id])
@@ -50,11 +50,11 @@ model Subscription {
 }
 
 model Post {
-  id          String     @id @default(cuid())
+  id          String    @id @default(cuid())
   title       String
   content     Json?
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
   subreddit   Subreddit @relation(fields: [subredditId], references: [id])
   subredditId String
 
@@ -63,8 +63,7 @@ model Post {
 
   comments Comment[]
 
-  votes       Vote[]
-
+  votes Vote[]
 }
 
 model Comment {
@@ -72,7 +71,7 @@ model Comment {
   text      String?
   createdAt DateTime @default(now())
 
-  author   User   @relation(fields: [authorId], references: [clerkId])
+  author   User?   @relation(fields: [authorId], references: [clerkId])
   authorId String
 
   post   Post?   @relation(fields: [postId], references: [id])
@@ -92,10 +91,10 @@ enum VoteType {
 }
 
 model Vote {
-  post      Post     @relation(fields: [postId], references: [id])
-  postId    String
-  user      User     @relation(fields: [userId], references: [clerkId])
-  userId    String
+  post   Post   @relation(fields: [postId], references: [id])
+  postId String
+  user   User?   @relation(fields: [userId], references: [clerkId])
+  userId String
 
   voteType VoteType
 
@@ -103,13 +102,12 @@ model Vote {
 }
 
 model CommentVote {
-  
   comment   Comment? @relation(fields: [commentId], references: [id])
   commentId String
   user      User     @relation(fields: [userId], references: [clerkId])
   userId    String
 
-  voteType  String?
+  voteType String?
 
   @@id([commentId, userId])
 }

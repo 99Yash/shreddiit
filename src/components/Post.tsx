@@ -22,6 +22,7 @@ const Post = ({
   currentVote?: PartialVote;
 }) => {
   const postRef = useRef<HTMLDivElement>(null); // to track post height
+
   return (
     <div className="rounded-md bg-white shadow ">
       <div className="px-6 py-4 flex justify-between ">
@@ -45,7 +46,7 @@ const Post = ({
               </>
             ) : null}
             {/* use clerk for displaying author */}
-            {/* <span>Posted by u/{post.author.name}</span>{' '} */}
+            {/* <span>Posted by </span>{' '} */}
             {formatTimeToNow(new Date(post.createdAt))}
           </div>
           <a href={`/r/${subredditName}/post/${post.id}`}>

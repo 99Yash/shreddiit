@@ -8,6 +8,7 @@ import { Inter } from 'next/font/google';
 import { siteConfig } from '../siteConfig';
 import { Metadata } from 'next';
 import { ReactNode } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
@@ -76,6 +77,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               </div>
               <Toaster />
             </Providers>
+            <Analytics />
           </body>
         </html>
       </ClerkProvider>

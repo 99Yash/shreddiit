@@ -8,7 +8,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { useClerk } from '@clerk/nextjs';
-import { LogOut, UserPlus } from 'lucide-react';
+import { LogOut, UserPlus, Users } from 'lucide-react';
 import Link from 'next/link';
 import { Avatar, AvatarImage } from './ui/avatar';
 import { Skeleton } from './ui/skeleton';
@@ -43,6 +43,13 @@ export const AuthedNavbar = () => {
         </div>
 
         <DropdownMenuSeparator />
+
+        <DropdownMenuItem className="cursor-pointer">
+          <Users className="mr-2 h-4 w-4" />
+          <Link href={'/'} className="font-medium">
+            Feed
+          </Link>
+        </DropdownMenuItem>
 
         <DropdownMenuItem className="cursor-pointer">
           <UserPlus className="mr-2 h-4 w-4" />

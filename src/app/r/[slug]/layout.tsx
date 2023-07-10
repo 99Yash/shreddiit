@@ -6,6 +6,30 @@ import { format } from 'date-fns';
 import ToggleSubscribe from '@/components/ToggleSubscribe';
 import Link from 'next/link';
 import { buttonVariants } from '@/components/ui/Button';
+import { Metadata } from 'next';
+import { siteConfig } from '@/siteConfig';
+
+type Props = {
+  params: {
+    slug: string;
+  };
+};
+
+export function generateMetadata({ params }: Props): Metadata {
+  // read route params
+  const slug = params.slug;
+
+  return {
+    title: `Community r/${slug} on ${siteConfig.title}`,
+    openGraph: {
+      type: 'website',
+      title: `${slug} community on ${siteConfig.title}`,
+      url: `${siteConfig.siteUrl}/r/${slug}`,
+      description: `Posts on the ${slug} on ${siteConfig.title}`,
+      locale: 'en_US',
+    },
+  };
+}
 
 const layout = async ({
   children,
@@ -55,11 +79,9 @@ const layout = async ({
   return (
     <div className="sm:container max-w-7xl mx-auto h-full pt-12 ">
       <div className="">
-        {/* todo button */}
         <div className="grid grid-cols-1 md:grid-cols-3 md:gap-x-4 py-6  ">
           <div className="flex flex-col col-span-2 space-y-6 ">{children}</div>
 
-          {/* info sidebar */}
           <div className="hidden md:block overflow-hidden h-fit rounded-lg border border-gray-200 order-first md:order-last ">
             <div className="px-6 py-4 ">
               <p className="font-semibold py-3">About r/{subreddit.name}</p>

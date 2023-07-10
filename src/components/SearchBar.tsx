@@ -16,6 +16,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { Users } from 'lucide-react';
 import debounce from 'lodash.debounce';
 import Link from 'next/link';
+import { useOnClickOutside } from '@/hooks/use-on-click-outside';
 
 const SearchBar = () => {
   const [searchInput, setSearchInput] = useState('');
@@ -52,6 +53,10 @@ const SearchBar = () => {
 
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useOnClickOutside(commandRef, () => {
+    setSearchInput(``);
+  });
 
   return (
     <Command

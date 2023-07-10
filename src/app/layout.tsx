@@ -6,8 +6,10 @@ import '@/styles/globals.css';
 import { ClerkProvider } from '@clerk/nextjs';
 import { Inter } from 'next/font/google';
 import { siteConfig } from '../siteConfig';
+import { Metadata } from 'next';
+import { ReactNode } from 'react';
 
-export const metadata = {
+export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
   title: siteConfig.title,
   description: siteConfig.description,
@@ -49,7 +51,7 @@ const inter = Inter({
 });
 
 interface RootLayoutProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {

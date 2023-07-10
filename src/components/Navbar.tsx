@@ -6,6 +6,7 @@ import { buttonVariants } from './ui/Button';
 import { useAuth } from '@clerk/nextjs';
 import { AuthedNavbar } from './AuthedNavbar';
 import { DM_Sans } from 'next/font/google';
+import SearchBar from './SearchBar';
 
 const dm_sans = DM_Sans({
   weight: ['400', '500', '700'],
@@ -27,6 +28,8 @@ const Navbar = () => {
             Shreddit
           </p>
         </Link>
+
+        <SearchBar />
 
         {!isSignedIn ? (
           <Link

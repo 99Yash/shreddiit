@@ -24,12 +24,12 @@ const MiniPostSubreddit: FC = () => {
                 alt={user?.firstName || 'User'}
               />
             </Avatar>
-            <span className="absolute bottom-0 right-0 rounded-full w-3 h-3 bg-green-500 outline outline-2 outline-white "></span>
+            <span className="absolute bottom-4 right-0 rounded-full w-3 h-3 bg-green-500 outline outline-2 outline-white "></span>
           </div>
         ) : (
           <div className="relative">
             <Skeleton className="h-12 w-12 rounded-full" />
-            <span className="absolute bottom-0 right-0 rounded-full w-3 h-3 bg-green-500 outline outline-2 outline-white "></span>
+            <span className="absolute bottom-4 right-0 rounded-full w-3 h-3 bg-green-500 outline outline-2 outline-white "></span>
           </div>
         )}
         <Input

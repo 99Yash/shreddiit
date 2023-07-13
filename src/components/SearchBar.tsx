@@ -88,7 +88,15 @@ const SearchBar = () => {
                   }}
                 >
                   <Users className="mr-2 h-4 w-4 " />
-                  <Link href={`/r/${subreddit.name}`}>r/{subreddit.name}</Link>
+                  <Link href={`/r/${subreddit.name}`}>
+                    r/{' '}
+                    <span
+                      className="font-semibold
+                  "
+                    >
+                      {subreddit.name}
+                    </span>
+                  </Link>
                 </CommandItem>
               ))}
             </CommandGroup>

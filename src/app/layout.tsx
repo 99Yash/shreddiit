@@ -77,7 +77,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               </div>
               <Toaster />
             </Providers>
-            <Analytics />
+            <Analytics mode="production" debug={false} />
           </body>
         </html>
       </ClerkProvider>

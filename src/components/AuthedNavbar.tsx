@@ -18,10 +18,14 @@ export const AuthedNavbar = () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
+      <DropdownMenuTrigger
+        asChild
+        className="hover:cursor-pointer border-none focus-within:border-none focus:border-none"
+      >
         {user ? (
           <Avatar>
             <AvatarImage
+              className="h-10 w-10"
               src={user?.profileImageUrl}
               alt={user?.firstName || 'User'}
             />
@@ -30,7 +34,7 @@ export const AuthedNavbar = () => {
           <Skeleton className="h-10 w-10 rounded-full bg-slate-500 " />
         )}
       </DropdownMenuTrigger>
-      <DropdownMenuContent className={`bg-slate-50 `} align="end">
+      <DropdownMenuContent className={`bg-slate-50  `} align="end">
         <div className="flex items-center justify-start gap-2 p-2">
           <div className="flex flex-col space-y-1 leading-none">
             {user?.fullName && <p className="font-medium">{user.fullName}</p>}

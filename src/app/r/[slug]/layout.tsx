@@ -15,21 +15,21 @@ type Props = {
   };
 };
 
-export function generateMetadata({ params }: Props): Metadata {
-  // read route params
-  const slug = params.slug;
+// export function generateMetadata({ params }: Props): Metadata {
+//   // read route params
+//   const slug = params.slug;
 
-  return {
-    title: `Community r/${slug} on ${siteConfig.title}`,
-    openGraph: {
-      type: 'website',
-      title: `${slug} community on ${siteConfig.title}`,
-      url: `${siteConfig.siteUrl}/r/${slug}`,
-      description: `Posts on the ${slug} on ${siteConfig.title}`,
-      locale: 'en_US',
-    },
-  };
-}
+//   return {
+//     title: `Community r/${slug} on ${siteConfig.title}`,
+//     openGraph: {
+//       type: 'website',
+//       title: `${slug} community on ${siteConfig.title}`,
+//       url: `${siteConfig.siteUrl}/r/${slug}`,
+//       description: `Posts on the ${slug} on ${siteConfig.title}`,
+//       locale: 'en_US',
+//     },
+//   };
+// }
 
 const layout = async ({
   children,
@@ -47,7 +47,6 @@ const layout = async ({
     include: {
       posts: {
         include: {
-          author: true,
           votes: true,
         },
       },
@@ -59,9 +58,7 @@ const layout = async ({
       subreddit: {
         name: slug,
       },
-      user: {
-        clerkId: user?.id,
-      },
+      userId: user?.id,
     },
   });
 

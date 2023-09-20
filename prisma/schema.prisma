@@ -3,15 +3,15 @@
 
 generator client {
   provider = "prisma-client-js"
+  engineType = "dataproxy"
 }
 
 datasource db {
   provider     = "mysql"
   url          = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
   relationMode = "prisma"
 }
-
-
 
 model Subreddit {
   id        String   @id @default(cuid())
@@ -33,6 +33,7 @@ model Subscription {
   subredditId String
 
   @@id([userId, subredditId])
+  @@index([subredditId])
 }
 
 model Post {
@@ -49,6 +50,8 @@ model Post {
   comments Comment[]
 
   votes Vote[]
+
+  @@index([subredditId])
 }
 
 model Comment {
@@ -67,6 +70,9 @@ model Comment {
 
   votes     CommentVote[]
   commentId String?
+
+  @@index([postId])
+  @@index([replyToId])
 }
 
 enum VoteType {
@@ -82,6 +88,7 @@ model Vote {
   voteType VoteType
 
   @@id([postId, userId])
+  @@index([postId])
 }
 
 model CommentVote {
@@ -92,4 +99,5 @@ model CommentVote {
   voteType String?
 
   @@id([commentId, userId])
+  @@index([commentId])
 }

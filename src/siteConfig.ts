@@ -1,5 +1,5 @@
 export const siteConfig = {
-  title: 'Shreddit',
+  title: 'Shreddiit',
   authorName: 'Yash Gourav Kar',
   authorGithub: 'https://github.com/99Yash',
   keywords: [

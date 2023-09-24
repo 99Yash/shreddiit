@@ -11,7 +11,6 @@ const OAuthSignIn = () => {
   const oauthProviders = [
     { name: 'Google', strategy: 'oauth_google', icon: 'google' },
     { name: 'Github', strategy: 'oauth_github', icon: 'gitHub' },
-    { name: 'Apple', strategy: 'oauth_apple', icon: 'apple' },
   ] satisfies {
     name: string;
     icon: keyof typeof Icons;
@@ -48,7 +47,7 @@ const OAuthSignIn = () => {
   }
 
   return (
-    <div className={`grid grid-cols-1 gap-2 sm:grid-cols-${3} sm:gap-4`}>
+    <div className={`grid grid-cols-1 gap-2 sm:grid-cols-${2} sm:gap-4`}>
       {oauthProviders.map((provider) => {
         const Icon = Icons[provider.icon];
 
@@ -58,7 +57,9 @@ const OAuthSignIn = () => {
             key={provider.strategy}
             variant="outline"
             onClick={() => void oauthSignIn(provider.strategy)}
-            className="w-full hover:bg-slate-300/50 bg-background sm:w-auto"
+            className={`w-full hover:bg-slate-300/50 bg-background sm:w-auto ${
+              isLoading === provider.strategy ? 'cursor-not-allowed' : ''
+            }`}
             disabled={isLoading !== null}
           >
             {isLoading === provider.strategy ? (

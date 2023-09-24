@@ -10,6 +10,10 @@
 ![Comments Section](./public/Screenshot_20230920_105050.png)
 ![Reply nesting](./public/Screenshot_20230920_105159.png)
 
+#### 🚀 Features
+
+- [x] Throttled posts
+
 #### 🚀 Stack
 
 - [NextJS](https://nextjs.org/)

@@ -20,7 +20,7 @@ export const AuthedNavbar = () => {
     <DropdownMenu>
       <DropdownMenuTrigger
         asChild
-        className="hover:cursor-pointer border-none focus-within:border-none focus:border-none"
+        className="cursor-pointer border-none focus-within:border-none focus:border-none"
       >
         {user ? (
           <Avatar>

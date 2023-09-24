@@ -25,7 +25,7 @@ const Navbar = () => {
         <Link href={'/'} className="flex gap-2 items-center">
           <Icons.logo className="h-8 w-8 bg-slate-50 sm:h-6 sm:w-6" />
           <p className="hidden text-zinc-800 text-sm font-semibold md:block  ">
-            Shreddit
+            Shreddiit
           </p>
         </Link>
 
@@ -36,7 +36,7 @@ const Navbar = () => {
             href={'/sign-in'}
             className={`${buttonVariants()} ${dm_sans.className}`}
           >
-            Sign In
+            Login
           </Link>
         ) : (
           <AuthedNavbar />

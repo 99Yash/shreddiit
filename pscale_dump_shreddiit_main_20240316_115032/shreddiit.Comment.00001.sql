@@ -1,0 +1,16 @@
+INSERT INTO `Comment`(`id`,`text`,`createdAt`,`authorId`,`postId`,`replyToId`,`commentId`) VALUES
+("cljshsuvy0001w4j0zwm02t2d","this is legit the dumbest post I\'ve seen","2023-07-07 11:27:43.191","user_2S8lbKYOqCuFfiGXjywmWa2p8qZ","cljs50jtb0003w4oowodd5b0k",NULL,NULL),
+("cljshu3n40003w4j028zbh0rh","Again. dumb","2023-07-07 11:28:41.161","user_2S8lbKYOqCuFfiGXjywmWa2p8qZ","cljs50jtb0003w4oowodd5b0k",NULL,NULL),
+("cljv2fsom0001w4x4gfzcovhe","if you dont agree that its one of the finest displays of storytelling, go fuck yourself","2023-07-09 06:40:58.098","user_2S3vu8XwLfc1B3eUHHMtjCMbOdm","cljr26db60001w4u0v9cuk8wo",NULL,NULL),
+("cljv44kmr0003w4x4mov8u4cs","Savage","2023-07-09 07:28:13.676","user_2S3vu8XwLfc1B3eUHHMtjCMbOdm","cljr26db60001w4u0v9cuk8wo","cljv2fsom0001w4x4gfzcovhe",NULL),
+("cljv4cv6t0005w4x4ule8o0hj","savage 2","2023-07-09 07:34:40.571","user_2S3vu8XwLfc1B3eUHHMtjCMbOdm","cljr26db60001w4u0v9cuk8wo","cljv2fsom0001w4x4gfzcovhe",NULL),
+("cljv5j92f0001w40c4uvu8tqm","well ain\'t this just shite","2023-07-09 08:07:38.146","user_2S3vu8XwLfc1B3eUHHMtjCMbOdm","cljqvdxhg0001w4nov58xofms",NULL,NULL),
+("clk0vtu5o0001w42gi03ygmvc","there is nothing to think","2023-07-13 08:22:32.897","user_2S3vu8XwLfc1B3eUHHMtjCMbOdm","cljs50jtb0003w4oowodd5b0k",NULL,NULL),
+("clk0w1hw90003w42gmqxot1ak","bro you are sick!!","2023-07-13 08:28:30.242","user_2S3vu8XwLfc1B3eUHHMtjCMbOdm","cljs50jtb0003w4oowodd5b0k","cljshsuvy0001w4j0zwm02t2d",NULL),
+("clmrapiq50003qo0hq1bmyrh1","I see the comment functionality is working fine and I would rather go back to working on another current project now.","2023-09-20 05:20:30.798","user_2S3vu8XwLfc1B3eUHHMtjCMbOdm","clmraj54e0001qo0h9gsrl2ta",NULL,NULL),
+("clmrar2670005qo0h9hs6jc1k","IDK why I am still here. I really feel happy after Prisma data proxy.","2023-09-20 05:21:42.657","user_2S3vu8XwLfc1B3eUHHMtjCMbOdm","clmraj54e0001qo0h9gsrl2ta","clmrapiq50003qo0hq1bmyrh1",NULL),
+("clq944f0o00013ll4m78w78up","Well well would you look at that.\nPrisma is sunsetting Data Proxy. Talk about great timing","2023-12-17 06:35:06.884","user_2S3vu8XwLfc1B3eUHHMtjCMbOdm","clmraj54e0001qo0h9gsrl2ta",NULL,NULL),
+("clq9459h800033ll4yj296upc","Nevermind. We got to Prisma Accelerate.","2023-12-17 06:35:46.355","user_2S3vu8XwLfc1B3eUHHMtjCMbOdm","clmraj54e0001qo0h9gsrl2ta","clq944f0o00013ll4m78w78up",NULL),
+("cls661zfw0001ryqc3zquauet","camp","2024-02-03 14:25:18.764","user_2S3vu8XwLfc1B3eUHHMtjCMbOdm","clmxbhd4h0001o30g4yoz0jf6",NULL,NULL),
+("cls6623kn0003ryqc7v2ggvjf","sadfsd","2024-02-03 14:25:24.117","user_2S3vu8XwLfc1B3eUHHMtjCMbOdm","clmxbhd4h0001o30g4yoz0jf6","cls661zfw0001ryqc3zquauet",NULL),
+("cls6626r00005ryqc2vo9qxqo","sdffsd","2024-02-03 14:25:28.236","user_2S3vu8XwLfc1B3eUHHMtjCMbOdm","clmxbhd4h0001o30g4yoz0jf6","cls661zfw0001ryqc3zquauet",NULL);
